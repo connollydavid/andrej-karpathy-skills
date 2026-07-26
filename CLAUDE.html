@@ -941,7 +941,7 @@ feasible, the waiver does not apply.</p>
 <p><strong>Multi-platform builds.</strong> A component whose <em>one</em> source pin ships on several platforms
 records one <code>[build "&lt;name&gt;" "&lt;platform&gt;"]</code> subsection per platform under its
 <code>[software "&lt;name&gt;"]</code> stanza, each carrying its own <code>build</code>/<code>toolchain</code>/<code>artifact</code>/<code>deploy</code>
-(and optional <code>repro-exempt</code>) plus an <code>attest-host</code> naming the OS (<code>linux</code>, <code>windows</code>,
+(and optional <code>repro-waiver</code>) plus an <code>attest-host</code> naming the OS (<code>linux</code>, <code>windows</code>,
 <code>macos</code>) that reproduces it. <code>--check</code> and <code>--verify-build</code> iterate the builds and attest
 each only on its <code>attest-host</code>. A build whose host is not the current one is skipped, and
 the run does not fail (a Linux runner cannot reproduce the Windows artifact, and is not asked to).

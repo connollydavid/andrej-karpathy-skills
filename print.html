@@ -1146,7 +1146,7 @@ feasible, the waiver does not apply.</p>
 <p><strong>Multi-platform builds.</strong> A component whose <em>one</em> source pin ships on several platforms
 records one <code>[build "&lt;name&gt;" "&lt;platform&gt;"]</code> subsection per platform under its
 <code>[software "&lt;name&gt;"]</code> stanza, each carrying its own <code>build</code>/<code>toolchain</code>/<code>artifact</code>/<code>deploy</code>
-(and optional <code>repro-exempt</code>) plus an <code>attest-host</code> naming the OS (<code>linux</code>, <code>windows</code>,
+(and optional <code>repro-waiver</code>) plus an <code>attest-host</code> naming the OS (<code>linux</code>, <code>windows</code>,
 <code>macos</code>) that reproduces it. <code>--check</code> and <code>--verify-build</code> iterate the builds and attest
 each only on its <code>attest-host</code>. A build whose host is not the current one is skipped, and
 the run does not fail (a Linux runner cannot reproduce the Windows artifact, and is not asked to).
@@ -1562,17 +1562,17 @@ requires = host-lifecycle v0.43.0
 depends  = 7127dc4
 verify   = grep -rqs "the completeness gate" host-template/CLAUDE.md</p>
 <p>[upgrade "RETIRE-hermetic-exempt"]
-title    = The hermeticity escape <code>hermetic-exempt</code> is retired; the case is recorded with <code>repro-exempt</code>
+title    = The hermeticity escape <code>hermetic-exempt</code> is retired; the case is recorded with <code>repro-waiver</code>
 action   = Entry <code>ecce498</code> told you that a component which cannot vendor offline "may carry <code>hermetic-exempt = call/NNNN</code>". No release of host-lifecycle ever parsed that key: a recipe carrying it is read as if the line were absent, so an adopter who wrote it has an exemption that never applied and a gate that stayed red. Run <code>host-lifecycle migrate-recipe &lt;dir&gt;</code>, which drops the line and names the reason; the case is recorded in <code>repro-waiver = call/NNNN</code> instead, citing the same decision. Hermeticity is a facet of reproducibility rather than a second property, so one key carries both and the two can no longer disagree. Nothing else changes. The property MUST stands: reproduce release binaries offline from pinned inputs. The gate invariant is also unchanged. A component recording a <code>deps-bundle</code> builds with no network. Its staged bundle hash matches the recorded one. A project that never wrote the key needs no action. Recorded as agentic-host call/0046.
 requires = host-lifecycle v0.44.0
 independent = true
-verify   = ! grep -rqs "hermetic-exempt" .host-software</p>
+verify   = ! grep -Eqs '^[[:space:]]<em>hermetic-exempt[[:space:]]</em>=' .host-software</p>
 <p>[upgrade "RENAME-repro-waiver"]
 title    = The reproducibility escape is <code>repro-waiver</code>, named for the citation it records
 action   = Run <code>host-lifecycle migrate-recipe &lt;dir&gt;</code>. It renames <code>repro-exempt</code> to <code>repro-waiver</code> in your <code>.host-software</code>, drops the <code>hermetic-exempt</code> line no release ever read, leaves every other line untouched, and is idempotent, so a second run reports nothing to do. Commit what it writes with this upgrade. The key records the name of a decision, so it is named for that record rather than for the state it excuses; the new spelling was settled by the same rotation-proof weak-agent probe that named <code>bootstrap</code> and <code>--verify-setup</code>. Both spellings parse, and the retired one reports itself on every read, so a recipe keeps working while you migrate and tells you it moved. One waiver carries two cases: a migrated build that does not reproduce byte for byte yet, and a component that cannot vendor its dependencies offline (the second folded in when the unimplemented hermeticity key was retired). A project with no waiver on any component renames nothing. Recorded as agentic-host call/0047; the retired spelling is removed at a later revision on its own entry.
 requires = host-lifecycle v0.44.0
 independent = true
-verify   = ! grep -rqs "repro-exempt" .host-software</p>
+verify   = ! grep -Eqs '^[[:space:]]<em>repro-exempt[[:space:]]</em>=' .host-software</p>
 
                     </main>
 
