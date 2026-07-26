@@ -308,15 +308,15 @@ keyed by the template revision at which its action became required.
     verify   = grep -rqs "the completeness gate" host-template/CLAUDE.md
 
 [upgrade "RETIRE-hermetic-exempt"]
-    title    = The hermeticity escape `hermetic-exempt` is retired; the case is recorded with `repro-exempt`
+    title    = The hermeticity escape `hermetic-exempt` is retired; the case is recorded with `repro-waiver`
     action   = Entry `ecce498` told you that a component which cannot vendor offline "may carry `hermetic-exempt = call/NNNN`". No release of host-lifecycle ever parsed that key: a recipe carrying it is read as if the line were absent, so an adopter who wrote it has an exemption that never applied and a gate that stayed red. Run `host-lifecycle migrate-recipe <dir>`, which drops the line and names the reason; the case is recorded in `repro-waiver = call/NNNN` instead, citing the same decision. Hermeticity is a facet of reproducibility rather than a second property, so one key carries both and the two can no longer disagree. Nothing else changes. The property MUST stands: reproduce release binaries offline from pinned inputs. The gate invariant is also unchanged. A component recording a `deps-bundle` builds with no network. Its staged bundle hash matches the recorded one. A project that never wrote the key needs no action. Recorded as agentic-host call/0046.
     requires = host-lifecycle v0.44.0
     independent = true
-    verify   = ! grep -rqs "hermetic-exempt" .host-software
+    verify   = ! grep -Eqs '^[[:space:]]*hermetic-exempt[[:space:]]*=' .host-software
 
 [upgrade "RENAME-repro-waiver"]
     title    = The reproducibility escape is `repro-waiver`, named for the citation it records
     action   = Run `host-lifecycle migrate-recipe <dir>`. It renames `repro-exempt` to `repro-waiver` in your `.host-software`, drops the `hermetic-exempt` line no release ever read, leaves every other line untouched, and is idempotent, so a second run reports nothing to do. Commit what it writes with this upgrade. The key records the name of a decision, so it is named for that record rather than for the state it excuses; the new spelling was settled by the same rotation-proof weak-agent probe that named `bootstrap` and `--verify-setup`. Both spellings parse, and the retired one reports itself on every read, so a recipe keeps working while you migrate and tells you it moved. One waiver carries two cases: a migrated build that does not reproduce byte for byte yet, and a component that cannot vendor its dependencies offline (the second folded in when the unimplemented hermeticity key was retired). A project with no waiver on any component renames nothing. Recorded as agentic-host call/0047; the retired spelling is removed at a later revision on its own entry.
     requires = host-lifecycle v0.44.0
     independent = true
-    verify   = ! grep -rqs "repro-exempt" .host-software
+    verify   = ! grep -Eqs '^[[:space:]]*repro-exempt[[:space:]]*=' .host-software

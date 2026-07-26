@@ -1,6 +1,6 @@
 # Reference workflow: prove the software's build is reproducible (the production
 # anchor). Software initiated under the methodology MUST reproduce; migrated software
-# may carry a `repro-exempt = call/NNNN` case decision, which `--verify-build` warns
+# may carry a `repro-waiver = call/NNNN` case decision, which `--verify-build` warns
 # on and skips. Replace the toolchain step with your component's pinned toolchain.
 name: Reproducible build
 
