@@ -113,6 +113,43 @@ the name.
 - `tools/host-lifecycle` allocates these numbers and checks the names for you.
   Use it (see below) instead of numbering by hand.
 
+### A number that names something resolves to it
+
+Numbers being identity has a second half: a reader has to be able to follow one.
+Write references so they resolve, and let the tool do the resolving.
+
+- **A register reference is `plan/NNNN` or `call/NNNN`,** optionally with a task
+  anchor (`plan/0003#gather-data`). `host-lifecycle resolve <ref> [--markdown|--url]`
+  turns it into the path, a markdown link, or the forge URL. Use the markdown form
+  in an authored document so the published site renders it as a link rather than as
+  text that merely looks like one.
+- **A bare `#N` is not a reference.** It renders as nothing in the site, and read
+  outside the forge it does not say whose tracker it means. Write `owner/repo#N`, or
+  `component#N` for a component this project records, and put it inside a link. The
+  resolver refuses a bare number rather than guessing: in a host repository most
+  bare numbers name a component's issues while the origin remote is the host, so a
+  guess is confidently wrong.
+- **A register number in a software repository belongs to its governing host.** The
+  software repository holds no `plan/` or `call/` room, so the reference is reported
+  as unresolved here and is never counted against it.
+- **`host-lifecycle refs --check <dir>` sweeps the authored markdown** and reports
+  what a reader cannot follow. The split follows the audit's: a register reference
+  pointing at nothing is a dead pointer and gates (exit 1); an issue number written
+  outside a link is legibility debt and advises (exit 3). A document the walk lists
+  and cannot read gates too, because a verdict over a corpus with a hole in it is a
+  claim the run cannot make.
+- **The record layer is excluded, and the exclusion is disclosed.** `MEMORY.md` is
+  excluded by construction whether or not you have written an exclusion list, and
+  `.host-lintignore` names your own records alongside it. This is the append-only
+  rule in its concrete form: a checker that pressed you to rewrite a record would
+  have broken the thing it was auditing. Every verdict says how many documents it
+  withheld, so the exclusion never reads as coverage.
+- **Expect a wall on the day you turn it on,** and do not let it gate. A project of
+  any age carries hundreds of bare numbers written before this rule existed; that is
+  why the issue half advises rather than blocks. Remediate live documents as you
+  touch them and leave the records alone. There is no fix flag, and the refusal says
+  so: only the author knows which tracker a bare number meant.
+
 ## Decisions: `call/`
 
 When you make a choice that someone later will ask "why?", record it as a
