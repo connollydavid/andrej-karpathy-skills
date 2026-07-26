@@ -475,6 +475,42 @@ read sequence, read the index, not the filenames.</li>
 <li><code>tools/host-lifecycle</code> allocates these numbers and checks the names for you.
 Use it (see below) instead of numbering by hand.</li>
 </ul>
+<h3 id="a-number-that-names-something-resolves-to-it"><a class="header" href="#a-number-that-names-something-resolves-to-it">A number that names something resolves to it</a></h3>
+<p>Numbers being identity has a second half: a reader has to be able to follow one.
+Write references so they resolve, and let the tool do the resolving.</p>
+<ul>
+<li><strong>A register reference is <code>plan/NNNN</code> or <code>call/NNNN</code>,</strong> optionally with a task
+anchor (<code>plan/0003#gather-data</code>). <code>host-lifecycle resolve &lt;ref&gt; [--markdown|--url]</code>
+turns it into the path, a markdown link, or the forge URL. Use the markdown form
+in an authored document so the published site renders it as a link rather than as
+text that merely looks like one.</li>
+<li><strong>A bare <code>#N</code> is not a reference.</strong> It renders as nothing in the site, and read
+outside the forge it does not say whose tracker it means. Write <code>owner/repo#N</code>, or
+<code>component#N</code> for a component this project records, and put it inside a link. The
+resolver refuses a bare number rather than guessing: in a host repository most
+bare numbers name a component's issues while the origin remote is the host, so a
+guess is confidently wrong.</li>
+<li><strong>A register number in a software repository belongs to its governing host.</strong> The
+software repository holds no <code>plan/</code> or <code>call/</code> room, so the reference is reported
+as unresolved here and is never counted against it.</li>
+<li><strong><code>host-lifecycle refs --check &lt;dir&gt;</code> sweeps the authored markdown</strong> and reports
+what a reader cannot follow. The split follows the audit's: a register reference
+pointing at nothing is a dead pointer and gates (exit 1); an issue number written
+outside a link is legibility debt and advises (exit 3). A document the walk lists
+and cannot read gates too, because a verdict over a corpus with a hole in it is a
+claim the run cannot make.</li>
+<li><strong>The record layer is excluded, and the exclusion is disclosed.</strong> <code>MEMORY.md</code> is
+excluded by construction whether or not you have written an exclusion list, and
+<code>.host-lintignore</code> names your own records alongside it. This is the append-only
+rule in its concrete form: a checker that pressed you to rewrite a record would
+have broken the thing it was auditing. Every verdict says how many documents it
+withheld, so the exclusion never reads as coverage.</li>
+<li><strong>Expect a wall on the day you turn it on,</strong> and do not let it gate. A project of
+any age carries hundreds of bare numbers written before this rule existed; that is
+why the issue half advises rather than blocks. Remediate live documents as you
+touch them and leave the records alone. There is no fix flag, and the refusal says
+so: only the author knows which tracker a bare number meant.</li>
+</ul>
 <h2 id="decisions-call"><a class="header" href="#decisions-call">Decisions: <code>call/</code></a></h2>
 <p>When you make a choice that someone later will ask "why?", record it as a
 decision in <code>call/</code>, in MADR (Markdown Any Decision Record) format. The bootstrap
@@ -1573,6 +1609,12 @@ action   = Run <code>host-lifecycle migrate-recipe &lt;dir&gt;</code>. It rename
 requires = host-lifecycle v0.44.0
 independent = true
 verify   = ! grep -Eqs '^[[:space:]]<em>repro-exempt[[:space:]]</em>=' .host-software</p>
+<p>[upgrade "REFS-a-number-resolves"]
+title    = A number that names something resolves to it, and a bare issue number is not a reference
+action   = Bump your pinned host-lifecycle to v0.44.0 and adopt the reference discipline in the CLAUDE.md section "A number that names something resolves to it". <code>host-lifecycle resolve &lt;ref&gt; [--markdown|--url]</code> turns <code>plan/NNNN</code>, <code>call/NNNN</code> or <code>plan/NNNN#anchor</code> into a path, a link, or the forge URL; write the markdown form in an authored document so the published site renders a link rather than text that looks like one. A bare <code>#N</code> is refused rather than guessed at, because in a host repository most bare numbers name a component's issues while the origin remote is the host: write <code>owner/repo#N</code>, or <code>component#N</code> for a component your recipe or submodule list records, inside a link. <code>host-lifecycle refs --check &lt;dir&gt;</code> sweeps your authored markdown: a register reference pointing at nothing gates (exit 1), an issue number outside a link advises (exit 3), and a listed document that cannot be read gates, because a verdict over a corpus with a hole in it is a claim the run cannot make. Expect a wall on the day you turn it on. Every project of any age carries hundreds of bare numbers written before this rule existed, which is exactly why the issue half advises rather than blocks: a gate that reddens a tree on the day it lands teaches an operator to bypass it. Remediate live documents as you touch them. There is no fix flag and the refusal says so, because only the author knows which tracker a number meant. Your record layer is excluded and stays excluded: <code>MEMORY.md</code> by construction whether or not you have written an exclusion list, and whatever <code>.host-lintignore</code> names beside it. That exclusion is the append-only rule in concrete form, since a checker that pressed you to rewrite a record would break the thing it audits, and every verdict discloses how many documents it withheld so the exclusion never reads as coverage. Recorded as agentic-host plan/0077, closing host-lifecycle#17.
+requires = host-lifecycle v0.44.0
+independent = true
+verify   = grep -rqs "A number that names something resolves to it" host-template/CLAUDE.md</p>
 
                     </main>
 
