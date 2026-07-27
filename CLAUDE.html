@@ -305,6 +305,22 @@ any age carries hundreds of bare numbers written before this rule existed; that 
 why the issue half advises rather than blocks. Remediate live documents as you
 touch them and leave the records alone. There is no fix flag, and the refusal says
 so: only the author knows which tracker a bare number meant.</li>
+<li><strong>The gate runs it, over the project's record.</strong> <code>host-lifecycle refs --gate .</code> is
+a clause of the <code>verify</code> phase's <code>recheck</code>, so a dead pointer or a document that
+cannot be read re-opens the verify receipt and stops a component release at its
+first step. It reads <strong>tracked</strong> documents only: a gate judges what the project
+recorded, and reddening over an uncommitted note would assert something no clone
+can re-derive and block a release over a file the release does not ship. The gate
+never returns the advisory code and never prints the per-file census; it discloses
+the debt as a count. <code>refs --check</code> keeps the whole working tree, drafts included,
+and is where you ask for the census, because that is a question about references
+rather than a question about whether you are done.</li>
+<li><strong>Do not repair the asymmetry between the two clauses.</strong> In the same <code>recheck</code>, a
+prose trope blocks and a bare issue number does not, and that looks like an
+inconsistency until you have the reason: a prose trope is your own text and is
+always rewordable, while only the author knows which tracker a bare number meant.
+Adding the reference clause's tolerance to the prose clause would disarm the gate
+a whole upgrade entry exists to install.</li>
 </ul>
 <h2 id="decisions-call"><a class="header" href="#decisions-call">Decisions: <code>call/</code></a></h2>
 <p>When you make a choice that someone later will ask "why?", record it as a

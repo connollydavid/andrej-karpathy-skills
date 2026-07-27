@@ -210,7 +210,7 @@ tool, and the rule is <strong>every phase emits a receipt</strong> (<code>done</
 <p>The <em>Where</em> room is the software under test, <strong>one or more</strong> components, each
 embedded as a <strong>bare store with worktrees</strong> under <code>software/&lt;name&gt;/</code>: the shared
 object store is <code>software/&lt;name&gt;/.bare</code>, with a <code>.git</code> gitdir-link file beside
-it (call/0039), and each worktree is keyed by branch at
+it, and each worktree is keyed by branch at
 <code>software/&lt;name&gt;/&lt;branch&gt;/</code> (the branch keeps its slashes, so <code>feature/login</code>
 nests). The canonical worktree (the audited state, where CI runs) is the
 component's recorded <code>branch</code> (default <code>main</code>) checked out at the <code>pin</code>; the rest are
