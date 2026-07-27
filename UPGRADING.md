@@ -13,6 +13,36 @@ against this template, so same-day revisions order correctly. Fetch the template
 to the target revision first; then apply the list and re-stamp. Each entry is
 keyed by the template revision at which its action became required.
 
+## What a `verify` condition must test
+
+An entry's `verify` is re-run twice over: by `upgrade --record` when the entry is
+applied, and by `software --check` on every gate run thereafter. It is a standing claim
+about the adopter's tree, not a check of the upgrade procedure.
+
+Every entry added from here on obeys four rules.
+
+1. **Test the adopter's side** — their tree, their recipe, or their running binary. Never
+   a file under `host-template/`: `upgrade` requires the template fetched at the target
+   revision before it will run, so such a condition is a post-condition of the command's
+   own precondition. It can neither refuse a false record nor detect a revert.
+2. **Test what the tool guarantees, not what the entry is about.** Build a tree that
+   SHOULD fail the condition and confirm it fails. A condition stricter than its own
+   action leaves a correct adopter permanently unable to record, with no remedy.
+3. **One command, no shell operators.** Conditions run through `sh -c` on POSIX and
+   `cmd /C` on Windows; a pipe, a `!`, or a `grep` does not survive the second. Prefer a
+   mode that answers for itself, such as `host-lifecycle capability <name>`.
+4. **Accept a tree the entry's own gate would redden.** The condition asks whether the
+   entry was applied, never whether the project is clean. Requiring clean wedges an
+   adopter whose one offending line sits in a record they must not rewrite.
+
+Entries written before this rule mostly grep `host-template/` and are weak in the sense
+of rule 1. They are **not** amended. An entry is a contract with claims already recorded
+against it in adopters' `.host-receipts`, and tightening one retroactively can convert a
+correctly applied upgrade into a standing HAZARD on a tree its owner cannot fix. Where
+such an entry's guarantee genuinely needs checking, check it from a NEW entry that names
+the old one in `depends`. This header is the exception to the file's append-only rule,
+because no recorded claim re-checks it: amend the header, never an entry.
+
 [upgrade "8c28e33"]
     title    = Software is a bare store with worktrees (call/0004)
     action   = Convert the embedded gitlink submodule to a bare store + worktrees (see the `host` repo, converting an existing submodule): preserve the pin, de-register the gitlink, write .host-software, gitignore the trees, then `host-lifecycle software --materialize`.
