@@ -15,10 +15,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v5
-      # Pinned to the same host-lifecycle the host gates on (v0.48.0), so the spine's
-      # prose verdict matches every adopter's verify audit; v0.48.0 embeds the
+      # Pinned to the same host-lifecycle the host gates on (v0.48.1), so the spine's
+      # prose verdict matches every adopter's verify audit; v0.48.1 embeds the
       # host-lint engine that honors the per-repo LEXICON in the prose lane (host-lifecycle#2).
       - name: Install host-lifecycle (pinned)
-        run: cargo install --git https://github.com/connollydavid/host-lifecycle --rev 1afa473cf11b05da378f3254d5d0edd9a740f870 --root "$HOME/.local"
+        run: cargo install --git https://github.com/connollydavid/host-lifecycle --rev 331d6e298e2007cd50df8f6cbfe5737c2584ab53 --root "$HOME/.local"
       - name: Prose gate (zero tropes in authored docs)
         run: "$HOME/.local/bin/host-lifecycle prose ."
