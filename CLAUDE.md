@@ -250,7 +250,8 @@ every repeat that had failed then answered correctly.
 
 Two constraints on the probe itself. Change **one** thing between rounds, or a
 result cannot be attributed to a cause. And record what the probe did not reach: a
-branch needing a terminal the harness has none of is unmeasured, not passing.
+branch that needs a controlling terminal the probe cannot open is unmeasured, not
+passing.
 
 ## The verification ladder
 
