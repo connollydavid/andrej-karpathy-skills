@@ -21,7 +21,7 @@ about the adopter's tree, not a check of the upgrade procedure.
 
 Every entry added from here on obeys four rules.
 
-1. **Test the adopter's side** — their tree, their recipe, or their running binary. Never
+1. **Test the adopter's side**: their tree, their recipe, or their running binary. Never
    a file under `host-template/`: `upgrade` requires the template fetched at the target
    revision before it will run, so such a condition is a post-condition of the command's
    own precondition. It can neither refuse a false record nor detect a revert.
@@ -364,3 +364,10 @@ because no recorded claim re-checks it: amend the header, never an entry.
     requires = host-lifecycle v0.46.0
     depends  = REFS-a-number-resolves
     verify   = host-lifecycle capability refs-gate
+
+[upgrade "LEXICON-declaration-is-a-report"]
+    title    = A LEXICON declaration reports a grammar defect, and inherited text cannot carry one
+    action   = Bump your pinned host-lifecycle to v0.49.0, which embeds the reconciled word-choice rules. Three things change. The shared grammar's one word-choice rule becomes three: two that match the cited catalog's own two entries and name them, and a third holding additions the catalog does not carry, because a rule may not cite a source that does not contain it. `harness` and `leverage` are matched as verbs rather than as bare words, so a test harness, a proof harness, an agent harness and an operating leverage stop warning; `certainly` is added, and `framework`, `ecosystem` and `paradigm` are deliberately not: the catalog describes prose in general, while this rule runs over software documentation, where each of the three names a real thing a project builds on. Then adopt the CLAUDE.md paragraph "A declaration is a report, not a settlement", which states the rule the old text left implicit: an entry in your `LEXICON` records that the shared grammar over-fired on your corpus, so it is provisional and owed upstream, and the same entry reached independently in two projects is a confirmed over-fire that belongs in the grammar rather than in either project. Last, review your own `LEXICON` and drop any entry the narrowing made unnecessary; a declaration you no longer need is one the next reader will trust for a reason that has expired. Narrow or add a term on a measured collision, never on a reading of the word. Recorded as agentic-host call/0051.
+    requires = host-lifecycle v0.49.0
+    independent = true
+    verify   = host-lifecycle capability word-choice-rules

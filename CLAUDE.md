@@ -332,6 +332,20 @@ lanes:
    itself. A legitimate tell-shaped token stays in the per-project `LEXICON`. The host's
    own maintainer validates universality and releases the graduation.
 
+   **A declaration is a report, not a settlement.** Declaring a token records that the
+   shared grammar over-fired on this corpus, so the entry is provisional and it is owed
+   upstream. Legitimacy is local by definition, which makes the same declaration reached
+   independently in two projects evidence about the rule rather than about either
+   project: a confirmed over-fire, fixed in the grammar, after which both declarations
+   retire. Narrow a term on a **measured** collision and add one the same way, never on a
+   reading of the word, since a list adopted wholesale is how an over-firing term arrives
+   in the first place. Check a rule against the source it cites before trusting either.
+   **Text that ships to another repository cannot be declared clear.** A spine carried by
+   copy-at-version lands in projects that never receive the declaring file, so a `LEXICON`
+   entry covering inherited text is unsound where it is written. Reword that text, or the
+   shared rule is the thing that is wrong. This template therefore carries no `LEXICON`
+   at all: what it publishes has to stand on its own writing.
+
    **Growth never inverts the disposition order, and it looks forward.** Reword a
    positional or ordinal reference into content by default, since a content name is
    almost always available; box or declare an irreducible citation; declare the
