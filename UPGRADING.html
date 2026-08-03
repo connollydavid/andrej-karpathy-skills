@@ -490,6 +490,12 @@ action   = Bump your pinned host-lifecycle to v0.49.0, which embeds the reconcil
 requires = host-lifecycle v0.49.0
 independent = true
 verify   = host-lifecycle capability word-choice-rules</p>
+<p>[upgrade "PIN-two-surfaces-two-claims"]
+title    = A manifest revision is compared to the anchor; a CI workflow revision declares a floor
+action   = Bump your pinned host-lifecycle to v0.49.2. <code>host-lifecycle software --check &lt;dir&gt;</code> now reads two pin surfaces it never read before, and reads them differently, because they carry different claims. A component's <code>Cargo.toml</code> git dependency on another component of your recipe is compiled into the artifact whose hash <code>.host-software</code> records, so it is a claim about the anchor itself and is compared to it: a drifted revision HAZARDs, and so does a family git dependency with no <code>rev</code> at all, because the recorded artifact hash could not re-derive from that manifest. Expect this one to gate on the day you turn it on if you have ever released a component that embeds a sibling without bumping the embed; that is the defect it exists to find, and the fix is to bump the <code>rev</code> and release. A component's own CI workflow installing one of your tools by <code>--rev</code> is the other surface and is NOT compared: it installs a lane driver and ships to nobody, so the revision declares a minimum the lane needs. Those are reported as a counted, enumerated advisory line naming every pin below the anchor with its version, on every run, gating none of them; bump each on its component's next release. Only a revision outside the tool's history gates there, because it names nothing reachable and the install itself would fail. Do not read the advisory tier as tolerance of drift. It is priced: equality over that surface costs one component release per site per release of the installed tool, none of them changing a line of component code, and a gate whose red state costs more to clear than the drift costs to tolerate is a gate that gets bypassed. If your CI pins carry a comment recording WHY a version was chosen, keep it; a floor with its reason written beside it is the strongest form of this and one of ours already was. Recorded as agentic-host call/0052, whose first draft asserted equality over both surfaces and was reopened after review found it wrong in both directions.
+requires = host-lifecycle v0.49.2
+independent = true
+verify   = host-lifecycle capability component-pin-readings</p>
 
                     </main>
 
