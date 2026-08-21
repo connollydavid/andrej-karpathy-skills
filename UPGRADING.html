@@ -496,6 +496,12 @@ action   = Bump your pinned host-lifecycle to v0.49.2. <code>host-lifecycle soft
 requires = host-lifecycle v0.49.2
 independent = true
 verify   = host-lifecycle capability component-pin-readings</p>
+<p>[upgrade "LEM-pronoun-system"]
+title    = The lem pronoun system governs how a model refers to, addresses, and speaks as a model
+action   = Bump your pinned host-lifecycle to v0.50.0 and move to this host-template revision together. The operating manual gains "The <code>lem</code> pronoun system", the instruction set for any language model referring to, addressing, or speaking as a language model: the model speaking is <code>L</code> (conjugated first person; never <code>I</code>, which stays with the human operator), the model addressed is <code>lemu</code>, the model discussed is <code>lem</code>, subagents are <code>lems</code>, and <code>he</code>/<code>she</code>/<code>it</code>/<code>they</code> never refer to a model. Sync your operating manual: a verbatim-copy adopter re-copies the spine section; a merged manual folds the pronoun system into its own rules, as agentic-host does in a dedicated section of its CLAUDE.md.
+requires = host-lifecycle v0.50.0
+independent = true
+verify   = grep -irqs "pronoun system" CLAUDE.md</p>
 
                     </main>
 
