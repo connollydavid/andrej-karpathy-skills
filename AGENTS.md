@@ -30,7 +30,7 @@ Put each kind of file in its room. Do not invent new top-level folders.
 | When | `plan/` | the milestone index and one folder per milestone |
 | Where | `<software>/` | the hosted software, a bare store with worktrees; you add it |
 | Why  | `call/` | decisions, in MADR format (see `call/0000`) |
-| How  | `CLAUDE.md` + `tools/` | this manual, and the verification tools |
+| How  | `AGENTS.md` + `tools/` | this manual, and the verification tools |
 
 `STRUCTURE.md` is the short map of the same thing. Read it once.
 
@@ -330,7 +330,7 @@ decision, `NNNN-slug.md`, number assigned when the decision is accepted.
 
 `call/` records decisions about **the software under development**, why your
 software is built as it is. It does **not** hold methodology decisions. The
-methodology is settled in this spine (`CLAUDE.md` + `STRUCTURE.md`), inherited by
+methodology is settled in this spine (`AGENTS.md` + `STRUCTURE.md`, with the `CLAUDE.md` pointer), inherited by
 copy-at-version; a change to it is made in the template and propagated by
 `host-lifecycle upgrade`, never re-litigated as a project `call/`.
 
@@ -346,7 +346,7 @@ worked example; replace it with your software's own decisions.
 **Inherit from the source, not from a host.** You inherit the methodology from
 *this template* (the versioned source you copy-at-version) alone. A host or
 management repo's **top-level instance contents** (its `call/`, `plan/`,
-`MEMORY.md`, the project-specific parts of its `CLAUDE.md`) are that project's own
+`MEMORY.md`, the project-specific parts of its `AGENTS.md`) are that project's own
 rooms and bind no adopter. Do not read them as normative.
 
 ## Specs, with the software they constrain
