@@ -946,6 +946,18 @@ adopt phase's command, which <code>adopt</code> and <code>init</code> build on. 
 (<code>host-lifecycle mcp</code>) exposes <code>init</code> and <code>adopt</code> as tools over stdio, eliciting the
 name through the client when it declares the capability and falling back to the verb's
 backstop otherwise; the MCP tools are an enhancement, never mandatory.</p>
+<h2 id="the-declared-always-loaded-corpus"><a class="header" href="#the-declared-always-loaded-corpus">The declared always-loaded corpus</a></h2>
+<p>A project's always-loaded files (the manual, <code>STRUCTURE.md</code>, the surfaces every
+session reads) are <strong>declared, never discovered</strong>: the <code>.host</code> stamp names a list
+file (<code>active-corpus = &lt;file&gt;</code>), one tracked path per line, and the prose verb
+derives its subject from that list. Inside the declaration the reading is strict:
+<strong>a warning is a flag</strong>, because the always-loaded text is the instruction every
+session reads and advice to the instruction is a defect of the instruction. The
+declaration's census counts the corpus's non-ASCII bytes and discloses the count
+on every verdict, gating nothing: script is never a violation, and the count
+exists so a new category is news instead of unmeasured. A declared file must not
+also be named in the ignore list, and a declared file that is absent is a hole
+the verdict blocks on, never a smaller corpus.</p>
 <h2 id="audited-plans-and-append-only-memory"><a class="header" href="#audited-plans-and-append-only-memory">Audited plans and append-only memory</a></h2>
 <p>Two disciplines keep the host trustworthy across sessions.</p>
 <ul>

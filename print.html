@@ -1152,6 +1152,18 @@ adopt phase's command, which <code>adopt</code> and <code>init</code> build on. 
 (<code>host-lifecycle mcp</code>) exposes <code>init</code> and <code>adopt</code> as tools over stdio, eliciting the
 name through the client when it declares the capability and falling back to the verb's
 backstop otherwise; the MCP tools are an enhancement, never mandatory.</p>
+<h2 id="the-declared-always-loaded-corpus"><a class="header" href="#the-declared-always-loaded-corpus">The declared always-loaded corpus</a></h2>
+<p>A project's always-loaded files (the manual, <code>STRUCTURE.md</code>, the surfaces every
+session reads) are <strong>declared, never discovered</strong>: the <code>.host</code> stamp names a list
+file (<code>active-corpus = &lt;file&gt;</code>), one tracked path per line, and the prose verb
+derives its subject from that list. Inside the declaration the reading is strict:
+<strong>a warning is a flag</strong>, because the always-loaded text is the instruction every
+session reads and advice to the instruction is a defect of the instruction. The
+declaration's census counts the corpus's non-ASCII bytes and discloses the count
+on every verdict, gating nothing: script is never a violation, and the count
+exists so a new category is news instead of unmeasured. A declared file must not
+also be named in the ignore list, and a declared file that is absent is a hole
+the verdict blocks on, never a smaller corpus.</p>
 <h2 id="audited-plans-and-append-only-memory"><a class="header" href="#audited-plans-and-append-only-memory">Audited plans and append-only memory</a></h2>
 <p>Two disciplines keep the host trustworthy across sessions.</p>
 <ul>
@@ -1868,6 +1880,12 @@ action   = Bump your pinned host-lifecycle to v0.51.0. The limitation recorded i
 requires = host-lifecycle v0.51.0
 depends  = GATE-refs-in-verify
 verify   = host-lifecycle capability refs-gate</p>
+<p>[upgrade "ACTIVE-corpus-and-agents-manual"]
+title    = The manual is AGENTS.md and the always-loaded corpus is declared, held strict
+action   = Bump your pinned host-lifecycle to v0.52.0 and move to this host-template revision together. The operating manual is now <code>AGENTS.md</code>; <code>CLAUDE.md</code> is a one-line text pointer naming it, so tools that look for the old name find the manual. Rename yours (<code>git mv CLAUDE.md AGENTS.md</code> keeps the history), write the pointer, and update your documents' citations; the ledger's early entries whose <code>verify</code> lines grep <code>host-template/CLAUDE.md</code> for spine sentences resolve against <code>AGENTS.md</code> now, which is expected and not a failure of your tree. Then declare your always-loaded corpus: add <code>active-corpus = .host-corpus</code> to your <code>.host</code> stamp, write <code>.host-corpus</code> with one tracked path per line, and the prose verb holds those files to the strict tier, where a warning is a flag, because the always-loaded text is the instruction every session reads. The census counts the declared corpus's non-ASCII bytes and discloses the count on every verdict, gating nothing: script is never a violation, so a Chinese or IPA population is measured, never forbidden. A declared file must not also be named in the ignore list, and a declared file that is absent is a violation, never a smaller corpus. Start with the manual and <code>STRUCTURE.md</code>; add the memory surfaces when you build them. Until you declare, the prose verb behaves exactly as it did at v0.51.0.
+requires = host-lifecycle v0.52.0
+independent = true
+verify   = host-lifecycle capability active-corpus</p>
 
                     </main>
 
