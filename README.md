@@ -7,7 +7,7 @@ specifications, and the people it serves) while the software itself, the
 
 The point is separation. Thought lives in the host, where it is versioned and
 audited, and a reader needs no checkout. Action lives in the submodule. An agent
-working in the host reads `CLAUDE.md` and knows exactly how to proceed.
+working in the host reads `AGENTS.md` and knows exactly how to proceed.
 
 ## What's in the box
 
@@ -22,7 +22,7 @@ Five rooms, one per question you ask about any work:
 | Why  | `call/` | decisions, in MADR format |
 | How  | `CLAUDE.md` + `tools/` | the operating manual and the verification tools |
 
-`CLAUDE.md` is the operating manual; read it first. `STRUCTURE.md` is the
+`AGENTS.md` is the operating manual; read it first. `CLAUDE.md` is a one-line pointer to it. `STRUCTURE.md` is the
 one-page map.
 
 ### The verification tools (`tools/`)
@@ -56,17 +56,17 @@ Then make it yours:
    `cast/applying-personas.md` gives the process.
 2. Add your software as the hosted submodule:
    `git submodule add <url> <software>/`.
-3. Start your first milestone under `plan/`, and read `CLAUDE.md` before you
+3. Start your first milestone under `plan/`, and read `AGENTS.md` before you
    write anything.
 
 ## Provenance
 
-The four working principles in `CLAUDE.md` are rewritten, in our own words, from
+The four working principles in `AGENTS.md` are rewritten, in our own words, from
 [Andrej Karpathy's observations](https://x.com/karpathy/status/2015883857489522876)
 on LLM coding pitfalls, by way of
 [Jiayuan Zhang (@forrestchang)](https://github.com/forrestchang) and the
 [andrej-karpathy-skills](https://github.com/multica-ai/andrej-karpathy-skills)
-contributors, whose `CLAUDE.md` this repository began as a fork of. The persona
+contributors, whose manual this repository began as a fork of. The persona
 process follows Powell, Keenan and McDaid (2007) on personas in XP.
 
 ## License
