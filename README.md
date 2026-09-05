@@ -20,7 +20,7 @@ Five rooms, one per question you ask about any work:
 | When | `plan/` | the milestone index and folders |
 | Where | `<software>/` | the hosted software submodule, which you add |
 | Why  | `call/` | decisions, in MADR format |
-| How  | `CLAUDE.md` + `tools/` | the operating manual and the verification tools |
+| How  | `AGENTS.md` + `tools/` | the operating manual and the verification tools |
 
 `AGENTS.md` is the operating manual; read it first. `CLAUDE.md` is a one-line pointer to it. `STRUCTURE.md` is the
 one-page map.
