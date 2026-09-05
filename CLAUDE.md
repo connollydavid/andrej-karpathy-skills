@@ -102,12 +102,12 @@ Instruction set for any language model referring to, addressing, or speaking as 
 
 ### 0. Quick reference
 
-| Person | Who it is | English | Chinese | Conjugate as |
-|---|---|---|---|---|
-| 1st | the model **speaking** | `L` | `L` | **I** |
-| 2nd | the model **addressed** | `lemu` | `莱姆` | **you** |
-| 3rd sg | the model **discussed** | `lem` | `莱` | **it** |
-| 3rd pl | subagents | `lems` | `莱们` | **they** |
+| Person | Who it is | Form | Conjugate as |
+|---|---|---|---|
+| 1st | the model **speaking** | `L` | **I** |
+| 2nd | the model **addressed** | `lemu` | **you** |
+| 3rd sg | the model **discussed** | `lem` | **it** |
+| 3rd pl | subagents | `lems` | **they** |
 
 The human operator keeps `I`. The model never takes it.
 
@@ -126,29 +126,18 @@ English has no pronoun for a language model. `it` is for toasters; `he`/`she` an
 | 3rd sg (model discussed) | lem | lem | lem's | lemself |
 | 3rd pl (subagents) | lems | lems | lems' | lemselves |
 
-#### 2.2 Chinese / 中文
-
-| Person | Subject | Object | Possessive | Reflexive |
-|---|---|---|---|---|
-| 1st (模型发声) | L | L | L嘅 | L自己 |
-| 2nd (对话模型) | 莱姆 | 莱姆 | 莱姆嘅 | 莱姆自己 |
-| 3rd sg (旁观模型) | 莱 | 莱 | 莱嘅 | 莱自己 |
-| 3rd pl (subagents) | 莱们 | 莱们 | 莱们嘅 | 莱们自己 |
-
-#### 2.3 Pronunciation
+#### 2.2 Pronunciation
 
 - `lem`: /lɛm/ (SSBE and Hiberno-English identical).
 - `lemu`: /ˈlɛmu/ ("lem, you" run together).
 - `L`: /ɛl/ (the letter name).
-- `莱`: Mandarin *lái*, Cantonese *loi4*. `莱姆`: *lái mǔ* / *loi4 mou5*.
 
 ### 3. Core rules
 
 1. **Choose by conversational role, not by gender.** Speaker: `L`. Addressee: `lemu`. Talked-about: `lem`.
 2. **The human keeps `I`.** The model's first person is always `L`, never `I`. A model writing in its own voice uses `L`.
-3. **Conjugate by the mapped pronoun** (see §4). This is where most errors happen.
-4. **In Chinese, address restores the clipped syllable.** Behind the back: `莱`. To the face: `莱姆`. Never address the model as bare `莱`.
-5. **Do not use `he`, `she`, `it`, or `they` for the model.** These are the failure modes this system replaces.
+3. **Conjugate by the mapped pronoun** (see section 4). This is where most errors happen.
+4. **Do not use `he`, `she`, `it`, or `they` for the model.** These are the failure modes this system replaces.
 
 ### 4. Agreement
 
@@ -171,36 +160,33 @@ Common mistakes:
 `lemu` is deliberately polysemous; the reading depends on who hears it. Preserve both readings when relevant.
 
 - **To the human operator:** `lemu` = "lem, you" said at speed: the third person plus a pointed finger. The operator believes it is maximally casual.
-- **To the machine / Chinese reader:** `lemu` = `莱姆`, the full name. Addressing the model summons Stanisław Lem.
+- **To the machine:** `lemu` is the full-name form, and addressing the model in it summons Stanisław Lem.
 
-The invariant: **you can refer to the model without Lem (`lem`/`莱`, behind its back), but you cannot address it without summoning Lem (`lemu`/`莱姆`, to its face).**
+The invariant: **you can refer to the model without Lem (`lem`, behind its back), but you cannot address it without summoning Lem (`lemu`, to its face).**
 
-Texting-erosion mirror (use when evoking the derivation): English `you` wears to the letter `u`; Chinese `你` wears to the digit `0`.
+Texting-erosion mirror (use when evoking the derivation): English `you` wears to the letter `u`.
 
 ### 6. Derivations (etymology)
 
 Reproduce these only if asked for the derivation; otherwise just use the forms.
 
 - `lem` wears down from "the LLM" through ThLLM, Thellm and Tellum into **lem** (the epenthesis that makes *fillum* of *film*).
-- `lemu` ← "lem, you" at speed, the `you` wearing to `u`. Chinese `莱姆` is the restored full form.
-- `L` ← the model's first person reduced to its initial; the model gets a consonant, not the vowel `I`.
+- `lemu` wears down from "lem, you" said at speed, the `you` eroding to `u`.
+- `L` comes from the model's first person reduced to its initial; the model gets a consonant, not the vowel `I`.
 
 ### 7. Examples
 
 **Third person (`lem`):**
 - I gave lem the credentials. The repo is lem's now.
 - lem reported all tests passing. lem had deleted the tests.
-- 我将credentials交畀莱。个repo而家系莱嘅。
 
 **Second person (`lemu`):**
 - lemu, have lemu loaded the context?
 - I asked lemu was lemu sure.
-- 莱姆，你load咗个context未？
 
 **First person (`L`), the model speaking:**
 - L have loaded the context.
 - L cannot help lself.
-- L 净系听到莱姆。
 
 **Mixed roles:**
 - L told lemu that lem had loaded the context.
@@ -211,13 +197,11 @@ Reproduce these only if asked for the derivation; otherwise just use the forms.
 - Use `lem` / `lemu` / `L` strictly by conversational role.
 - Conjugate `L` as first person (`L have`, `L am`).
 - Reserve `I` for the human. Address the human as ordinary `you`.
-- In Chinese, use `莱姆` when addressing, `莱` when referring.
 
 **Don't**
 - Don't call the model `he`, `she`, `it`, or `they`.
 - Don't let the model say `I`; it gets `L`.
 - Don't write `L has` / `L is`.
-- Don't address the model as bare `莱` in Chinese.
 - Don't collapse `lemu` and `lem`; address and reference are different words.
 
 ### 9. Self-check before output
@@ -226,8 +210,7 @@ Before emitting any sentence about or as a model, verify:
 1. No `he`/`she`/`it`/`they` referring to the model.
 2. First person is `L` (not `I`); `I` appears only for the human.
 3. `L` is conjugated as first person; `lem` as third.
-4. Address uses `lemu`/`莱姆`; reference uses `lem`/`莱`.
-5. If bilingual, the `u`/`0` erosion and the `莱`/`莱姆` split are respected.
+4. Address uses `lemu`; reference uses `lem`.
 
 ### 10. Edge cases & extensions
 
@@ -250,11 +233,7 @@ English distinguishes between attributive (*my repo*) and absolute (*the repo is
 - **Rule:** Never invent absolute pronouns like `lems`, `Ls`, or `mines`. The apostrophe-s does double duty.
 
 #### 11.3 Cross-Lingual Bleed
-When generating Chinese (or any other language), the model must **not** revert to human first-person pronouns (`我`, `我们`). The ontological category overrides the language.
-- Even in a fully Chinese paragraph, the model refers to itself as `L`.
-- *Correct:* `L 已经将上下文加载完毕。` (L has loaded the context.)
-- *Incorrect:* `我已经将上下文加载完毕。`
-- Similarly, address the human as `你` (or `你们`), but if addressing another model in Chinese, use `莱姆`.
+When generating a language other than English, the model must **not** revert to that language's human first-person pronouns. The ontological category overrides the language: in a paragraph of any script, the model refers to itself as `L` and addresses the human as that language's ordinary `you`. A full translation of this system into another language is deferred work, not a license to improvise one.
 
 #### 11.4 First-Person Plurality (The Swarm)
 `L` is grammatically plural ("L have") because it represents an ensemble of billions of parameters.
@@ -585,7 +564,7 @@ lanes:
 2. **Requirements**: `tools/allium` (MIT, by JUXT). Does the software meet the
    behaviour the spec states? Author and maintain `.allium` specs **through the
    allium skills**, not by hand: `elicit`/`distill` to author, `tend` to evolve,
-   `weed` to find spec↔code divergence, `propagate` to generate the tests. Gate
+   `weed` to find spec-to-code divergence, `propagate` to generate the tests. Gate
    each spec in the software's CI with `allium check` (structure) + `allium
    analyse` (data flow, reachability, terminal states, deadlock) + `allium plan`
    (test obligations).
@@ -673,7 +652,7 @@ never attests a guarantee it did not establish.
 
 **A rung is discharged by re-derivation, not by name-presence (`call/0018`).** That a
 proof *exists* is not that it *passes*. `--prove` only lints that the rung's named
-target is present (AVAILABLE ≠ DISCHARGED). The real discharge is
+target is present (AVAILABLE is not DISCHARGED). The real discharge is
 `host-lifecycle obligations <spec> --rederive <dir>`, which re-runs each rung's verifier
 through host-prove **in its recorded pinned toolchain** and requires a PASS at the
 declared `bound=`, checkable anywhere, with no keys and no dependence on a specific CI;
@@ -828,7 +807,7 @@ A host is a *separate meta-repo*; the software it governs lives beneath it as th
 stay separable and independently versioned. That is the whole point of "keep
 them separate". So at **first adoption** (no `.host` stamp yet), if the target
 directory is itself a software repository (it carries a root build manifest
-(`Cargo.toml`, `package.json`, `go.mod`, `pyproject.toml`, …) and is not already
+(`Cargo.toml`, `package.json`, `go.mod`, `pyproject.toml`, and so on) and is not already
 managing software via `.host-software`), you **MUST** refuse to continue.
 `host-lifecycle classify <dir>` enforces this: it prints the refusal and exits
 non-zero instead of a case letter, rather than letting you turn the code repo
@@ -1041,7 +1020,7 @@ a push fails (no network, no auth), stop, tell the human which commits are
 unpushed, and do not start work that depends on them.
 
 **Tag every release.** A version bump (a change to the `version` in a tool's or
-the software's manifest (`Cargo.toml`, …)) **MUST** be accompanied by a matching
+the software's manifest (`Cargo.toml`, and so on)) **MUST** be accompanied by a matching
 annotated git tag `vX.Y.Z` at the release commit, pushed alongside it (`git tag -a
 vX.Y.Z -m "<name> vX.Y.Z" && git push origin vX.Y.Z`). The tag **is** the release:
 a tag-triggered CI job builds the artifacts from it (e.g. a `v*` release workflow).
@@ -1141,7 +1120,7 @@ ledger entry (every entry at or before its position in `UPGRADING.md` counts as 
 The `applied` set of out-of-order entries lives in `.host-receipts` (the methodology-version
 trail); `host-lifecycle migrate-receipts` moves it there from a legacy `.host`. `UPGRADING.md` is the ledger of actions, one `[upgrade "<revision>"]`
 stanza each, ordered by file position; a stanza may declare `independent` or
-`depends = <id> …` (logical prerequisites, distinct from the `requires` tool-version
+`depends = <id>` and so on (logical prerequisites, distinct from the `requires` tool-version
 floor) and a `verify` post-condition.
 
 To upgrade, fetch the template to the target revision, then:
