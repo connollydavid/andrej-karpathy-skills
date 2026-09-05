@@ -392,3 +392,10 @@ because no recorded claim re-checks it: amend the header, never an entry.
     requires = host-lifecycle v0.51.0
     depends  = GATE-refs-in-verify
     verify   = host-lifecycle capability refs-gate
+
+[upgrade "ACTIVE-corpus-and-agents-manual"]
+    title    = The manual is AGENTS.md and the always-loaded corpus is declared, held strict
+    action   = Bump your pinned host-lifecycle to v0.52.0 and move to this host-template revision together. The operating manual is now `AGENTS.md`; `CLAUDE.md` is a one-line text pointer naming it, so tools that look for the old name find the manual. Rename yours (`git mv CLAUDE.md AGENTS.md` keeps the history), write the pointer, and update your documents' citations; the ledger's early entries whose `verify` lines grep `host-template/CLAUDE.md` for spine sentences resolve against `AGENTS.md` now, which is expected and not a failure of your tree. Then declare your always-loaded corpus: add `active-corpus = .host-corpus` to your `.host` stamp, write `.host-corpus` with one tracked path per line, and the prose verb holds those files to the strict tier, where a warning is a flag, because the always-loaded text is the instruction every session reads. The census counts the declared corpus's non-ASCII bytes and discloses the count on every verdict, gating nothing: script is never a violation, so a Chinese or IPA population is measured, never forbidden. A declared file must not also be named in the ignore list, and a declared file that is absent is a violation, never a smaller corpus. Start with the manual and `STRUCTURE.md`; add the memory surfaces when you build them. Until you declare, the prose verb behaves exactly as it did at v0.51.0.
+    requires = host-lifecycle v0.52.0
+    independent = true
+    verify   = host-lifecycle capability active-corpus

@@ -845,6 +845,20 @@ adopt phase's command, which `adopt` and `init` build on. A spawned MCP surface
 name through the client when it declares the capability and falling back to the verb's
 backstop otherwise; the MCP tools are an enhancement, never mandatory.
 
+## The declared always-loaded corpus
+
+A project's always-loaded files (the manual, `STRUCTURE.md`, the surfaces every
+session reads) are **declared, never discovered**: the `.host` stamp names a list
+file (`active-corpus = <file>`), one tracked path per line, and the prose verb
+derives its subject from that list. Inside the declaration the reading is strict:
+**a warning is a flag**, because the always-loaded text is the instruction every
+session reads and advice to the instruction is a defect of the instruction. The
+declaration's census counts the corpus's non-ASCII bytes and discloses the count
+on every verdict, gating nothing: script is never a violation, and the count
+exists so a new category is news instead of unmeasured. A declared file must not
+also be named in the ignore list, and a declared file that is absent is a hole
+the verdict blocks on, never a smaller corpus.
+
 ## Audited plans and append-only memory
 
 Two disciplines keep the host trustworthy across sessions.
