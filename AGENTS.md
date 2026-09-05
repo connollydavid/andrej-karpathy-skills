@@ -1,4 +1,4 @@
-# CLAUDE.md: operating manual for an agentic project
+# AGENTS.md: operating manual for an agentic project
 
 This file tells you, the agent, how to work in this repository. Follow it
 exactly. The rules are written to be literal: when one says "do X", do X. Do

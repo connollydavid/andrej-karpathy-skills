@@ -1,0 +1,3 @@
+| How  | `CLAUDE.md` + `tools/` | this manual, and the verification tools | => | How  | `AGENTS.md` + `tools/` | this manual, and the verification tools |
+methodology is settled in this spine (`CLAUDE.md` + `STRUCTURE.md`) => methodology is settled in this spine (`AGENTS.md` + `STRUCTURE.md`, with the `CLAUDE.md` pointer)
+the project-specific parts of its `CLAUDE.md` => the project-specific parts of its `AGENTS.md`
