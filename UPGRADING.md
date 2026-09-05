@@ -385,3 +385,10 @@ because no recorded claim re-checks it: amend the header, never an entry.
     requires = host-lifecycle v0.50.0
     independent = true
     verify   = grep -irqs "pronoun system" CLAUDE.md
+
+[upgrade "REFS-a-foreign-citation-names-its-repository"]
+    title    = A citation of another project's register has an accepted form: the link
+    action   = Bump your pinned host-lifecycle to v0.51.0. The limitation recorded in `GATE-refs-in-verify` is settled: a citation of a record that lives in another project has an accepted form, a register reference inside a markdown link whose URL names the file it cites, as in `[agentic-host call/0039](https://github.com/connollydavid/agentic-host/blob/main/call/0039-bare-store-is-dot-bare-with-a-git-file.md)`. The sweep accepts the link's form: the URL names the record the token claims, under a repository other than this one. Form is all it checks, and the verdict says so: the count of such citations is disclosed on every exit as accepted and unread, and the disclosure never enumerates them. A citation in bare prose, or a link whose URL names a different file than the token claims, is still a dead pointer and still gates. The two local remedies the earlier entry recorded, dropping the citation or quoting it in backticks, stay valid; the backtick spelling marks an example rather than a reference, so use it only when that is what you mean. Your record layer stays excluded either way, with the withheld count disclosed beside every verdict.
+    requires = host-lifecycle v0.51.0
+    depends  = GATE-refs-in-verify
+    verify   = host-lifecycle capability refs-gate
