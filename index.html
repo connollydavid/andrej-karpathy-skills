@@ -88,7 +88,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded affix "><a href="index.html" class="active">host-template</a></li><li class="chapter-item expanded affix "><li class="part-title">Cast: who</li><li class="chapter-item expanded "><a href="cast/index.html"><strong aria-hidden="true">1.</strong> Cast: the project's Who</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="cast/applying-personas.html"><strong aria-hidden="true">1.1.</strong> Applying personas during planning</a></li><li class="chapter-item expanded "><a href="cast/mara.html"><strong aria-hidden="true">1.2.</strong> Mara: the Human Operator</a></li><li class="chapter-item expanded "><a href="cast/wren.html"><strong aria-hidden="true">1.3.</strong> Wren: the Agentic LLM Developer</a></li></ol></li><li class="chapter-item expanded "><li class="part-title">Plan: what & when</li><li class="chapter-item expanded "><a href="plan-index.html"><strong aria-hidden="true">2.</strong> Plan</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="plan/0001-example-milestone/index.html"><strong aria-hidden="true">2.1.</strong> 0001 example milestone</a></li></ol></li><li class="chapter-item expanded "><li class="part-title">Software: where</li><li class="chapter-item expanded affix "><li class="part-title">Call: why</li><li class="chapter-item expanded "><a href="call/0000-use-markdown-decision-records.html"><strong aria-hidden="true">3.</strong> Use Markdown decision records (MADR)</a></li><li class="chapter-item expanded affix "><li class="part-title">Reference: how</li><li class="chapter-item expanded "><a href="CLAUDE.html"><strong aria-hidden="true">4.</strong> CLAUDE.md: operating manual for an agentic project</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="MIGRATION.html"><strong aria-hidden="true">4.1.</strong> MIGRATION.md: the process moved to the host repo</a></li><li class="chapter-item expanded "><a href="STRUCTURE.html"><strong aria-hidden="true">4.2.</strong> Structure</a></li><li class="chapter-item expanded "><a href="UPGRADING.html"><strong aria-hidden="true">4.3.</strong> UPGRADING.md: the version-to-version upgrade ledger</a></li></ol></li><li class="chapter-item expanded "><li class="part-title">Memory</li></ol>
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="index.html" class="active">host-template</a></li><li class="chapter-item expanded affix "><li class="part-title">Cast: who</li><li class="chapter-item expanded "><a href="cast/index.html"><strong aria-hidden="true">1.</strong> Cast: the project's Who</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="cast/applying-personas.html"><strong aria-hidden="true">1.1.</strong> Applying personas during planning</a></li><li class="chapter-item expanded "><a href="cast/mara.html"><strong aria-hidden="true">1.2.</strong> Mara: the Human Operator</a></li><li class="chapter-item expanded "><a href="cast/wren.html"><strong aria-hidden="true">1.3.</strong> Wren: the Agentic LLM Developer</a></li></ol></li><li class="chapter-item expanded "><li class="part-title">Plan: what & when</li><li class="chapter-item expanded "><a href="plan-index.html"><strong aria-hidden="true">2.</strong> Plan</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="plan/0001-example-milestone/index.html"><strong aria-hidden="true">2.1.</strong> 0001 example milestone</a></li></ol></li><li class="chapter-item expanded "><li class="part-title">Software: where</li><li class="chapter-item expanded affix "><li class="part-title">Call: why</li><li class="chapter-item expanded "><a href="call/0000-use-markdown-decision-records.html"><strong aria-hidden="true">3.</strong> Use Markdown decision records (MADR)</a></li><li class="chapter-item expanded affix "><li class="part-title">Reference: how</li><li class="chapter-item expanded "><a href="CLAUDE.html"><strong aria-hidden="true">4.</strong> CLAUDE</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="AGENTS.html"><strong aria-hidden="true">4.1.</strong> CLAUDE.md: operating manual for an agentic project</a></li><li class="chapter-item expanded "><a href="MIGRATION.html"><strong aria-hidden="true">4.2.</strong> MIGRATION.md: the process moved to the host repo</a></li><li class="chapter-item expanded "><a href="STRUCTURE.html"><strong aria-hidden="true">4.3.</strong> Structure</a></li><li class="chapter-item expanded "><a href="UPGRADING.html"><strong aria-hidden="true">4.4.</strong> UPGRADING.md: the version-to-version upgrade ledger</a></li></ol></li><li class="chapter-item expanded "><li class="part-title">Memory</li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle">
                 <div class="sidebar-resize-indicator"></div>
@@ -180,7 +180,7 @@ specifications, and the people it serves) while the software itself, the
 <em>action</em>, lives in a submodule beneath it.</p>
 <p>The point is separation. Thought lives in the host, where it is versioned and
 audited, and a reader needs no checkout. Action lives in the submodule. An agent
-working in the host reads <code>CLAUDE.md</code> and knows exactly how to proceed.</p>
+working in the host reads <code>AGENTS.md</code> and knows exactly how to proceed.</p>
 <h2 id="whats-in-the-box"><a class="header" href="#whats-in-the-box">What's in the box</a></h2>
 <p>Five rooms, one per question you ask about any work:</p>
 <div class="table-wrapper"><table><thead><tr><th>Question</th><th>Room</th><th>Holds</th></tr></thead><tbody>
@@ -192,7 +192,7 @@ working in the host reads <code>CLAUDE.md</code> and knows exactly how to procee
 <tr><td>How</td><td><code>CLAUDE.md</code> + <code>tools/</code></td><td>the operating manual and the verification tools</td></tr>
 </tbody></table>
 </div>
-<p><code>CLAUDE.md</code> is the operating manual; read it first. <code>STRUCTURE.md</code> is the
+<p><code>AGENTS.md</code> is the operating manual; read it first. <code>CLAUDE.md</code> is a one-line pointer to it. <code>STRUCTURE.md</code> is the
 one-page map.</p>
 <h3 id="the-verification-tools-tools"><a class="header" href="#the-verification-tools-tools">The verification tools (<code>tools/</code>)</a></h3>
 <p>Each tool is a referenced submodule, kept under its own license; we orchestrate
@@ -220,16 +220,16 @@ git submodule update --init --recursive   # if you skipped --recurse-submodules
 <code>cast/applying-personas.md</code> gives the process.</li>
 <li>Add your software as the hosted submodule:
 <code>git submodule add &lt;url&gt; &lt;software&gt;/</code>.</li>
-<li>Start your first milestone under <code>plan/</code>, and read <code>CLAUDE.md</code> before you
+<li>Start your first milestone under <code>plan/</code>, and read <code>AGENTS.md</code> before you
 write anything.</li>
 </ol>
 <h2 id="provenance"><a class="header" href="#provenance">Provenance</a></h2>
-<p>The four working principles in <code>CLAUDE.md</code> are rewritten, in our own words, from
+<p>The four working principles in <code>AGENTS.md</code> are rewritten, in our own words, from
 <a href="https://x.com/karpathy/status/2015883857489522876">Andrej Karpathy's observations</a>
 on LLM coding pitfalls, by way of
 <a href="https://github.com/forrestchang">Jiayuan Zhang (@forrestchang)</a> and the
 <a href="https://github.com/multica-ai/andrej-karpathy-skills">andrej-karpathy-skills</a>
-contributors, whose <code>CLAUDE.md</code> this repository began as a fork of. The persona
+contributors, whose manual this repository began as a fork of. The persona
 process follows Powell, Keenan and McDaid (2007) on personas in XP.</p>
 <h2 id="license"><a class="header" href="#license">License</a></h2>
 <p>Released into the public domain under the <a href="LICENSE">Unlicense</a>. The provenance
